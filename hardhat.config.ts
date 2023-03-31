@@ -12,15 +12,11 @@ const config: HardhatUserConfig = {
   networks: {
     goerli: {
       url: "https://eth-goerli.g.alchemy.com/v2/CYp2hBlgYv34ni5P6O9AjkeNU0G4KdgJ",
-      accounts: [
-        "a748a703baf35d9902a3b96606479b3ca40207aa3cd2f1e2ccc9cf1e8350909d",
-      ],
+      accounts: [process.env.PRIVATE_KEY as string],
     },
     sepolia: {
       url: "https://eth-sepolia.g.alchemy.com/v2/1rlFeailNxqJyHA736QgIGJTd1zm8iwc",
-      accounts: [
-        "a748a703baf35d9902a3b96606479b3ca40207aa3cd2f1e2ccc9cf1e8350909d",
-      ],
+      accounts: [process.env.PRIVATE_KEY as string],
     },
   },
 };
