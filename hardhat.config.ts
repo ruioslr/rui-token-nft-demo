@@ -1,12 +1,6 @@
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
-task("accounts", "Prints the list of accounts")
-  .addParam("number", "Number of accounts to print")
-  .setAction(async (taskArgs, hre) => {
-    console.log(hre.ethers.utils.formatEther(taskArgs.number));
-  });
-
 const config: HardhatUserConfig = {
   solidity: "0.8.18",
   networks: {

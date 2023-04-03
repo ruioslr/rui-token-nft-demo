@@ -6,6 +6,7 @@ typechain
 typechain-types
 
 .idea
+private_keys
 
 
 # Hardhat files
