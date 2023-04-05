@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "./IERC20.sol";
+import './IERC20.sol';
 
 contract RuiToken is IERC20 {
     string private _name; // 代币名称
@@ -45,22 +45,18 @@ contract RuiToken is IERC20 {
         return _totalSupply;
     }
 
-    function balanceOf(address _owner)
-        external
-        view
-        override
-        returns (uint256 balance)
-    {
+    function balanceOf(
+        address _owner
+    ) external view override returns (uint256 balance) {
         return _balances[_owner];
     }
 
-    function transfer(address _to, uint256 _value)
-        external
-        override
-        returns (bool success)
-    {
+    function transfer(
+        address _to,
+        uint256 _value
+    ) external override returns (bool success) {
         // 检查发送者余额是否足够
-        require(_balances[msg.sender] >= _value, "Insufficient balance");
+        require(_balances[msg.sender] >= _value, 'Insufficient balance');
         // 扣除发送者余额
         _balances[msg.sender] -= _value;
         // 增加接收者余额
@@ -76,11 +72,11 @@ contract RuiToken is IERC20 {
         uint256 _value
     ) external override returns (bool success) {
         // 检查发送者余额是否足够
-        require(_balances[_from] >= _value, "Insufficient balance");
+        require(_balances[_from] >= _value, 'Insufficient balance');
         // 检查授权额度是否足够
         require(
             _allowance[_from][msg.sender] >= _value,
-            "Insufficient allowance"
+            'Insufficient allowance'
         );
         // 扣除发送者余额
         _balances[_from] -= _value;
@@ -93,11 +89,10 @@ contract RuiToken is IERC20 {
         return true;
     }
 
-    function approve(address _spender, uint256 _value)
-        external
-        override
-        returns (bool success)
-    {
+    function approve(
+        address _spender,
+        uint256 _value
+    ) external override returns (bool success) {
         // 设置授权额度
         _allowance[msg.sender][_spender] = _value;
         // 触发授权事件
@@ -105,12 +100,10 @@ contract RuiToken is IERC20 {
         return true;
     }
 
-    function allowance(address _owner, address _spender)
-        external
-        view
-        override
-        returns (uint256 remaining)
-    {
+    function allowance(
+        address _owner,
+        address _spender
+    ) external view override returns (uint256 remaining) {
         return _allowance[_owner][_spender];
     }
 }

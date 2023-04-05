@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "./IERC20.sol";
+import './IERC20.sol';
 
 // 任何人都可以调用，但是需要支付手续费
 contract AirdropFree {
@@ -32,12 +32,12 @@ contract AirdropFree {
         // 验证调用者的代币数量是否足够
         require(
             tokenContract.balanceOf(msg.sender) >= totalAmount,
-            "Not enough tokens in the address"
+            'Not enough tokens in the address'
         );
         // 检查调用者授权数量是否足够
         require(
             tokenContract.allowance(msg.sender, address(this)) >= totalAmount,
-            "Not enough tokens approved"
+            'Not enough tokens approved'
         );
         // 空投代币
         for (uint256 i = 0; i < _to.length; i++) {
@@ -52,7 +52,7 @@ contract AirdropFree {
         // 验证数组长度是否相等
         require(
             _to.length == _amount.length,
-            "The length of the two arrays must be the same"
+            'The length of the two arrays must be the same'
         );
         // 计算总数量
         uint256 totalAmount = 0;
@@ -67,12 +67,12 @@ contract AirdropFree {
         // 验证调用者的代币数量是否足够
         require(
             tokenContract.balanceOf(msg.sender) >= totalAmount,
-            "Not enough tokens in the address"
+            'Not enough tokens in the address'
         );
         // 检查调用者授权数量是否足够
         require(
             tokenContract.allowance(msg.sender, address(this)) >= totalAmount,
-            "Not enough tokens approved"
+            'Not enough tokens approved'
         );
         // 空投代币
         for (uint256 i = 0; i < _to.length; i++) {

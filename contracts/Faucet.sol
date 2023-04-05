@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "./IERC20.sol";
+import './IERC20.sol';
 
 contract Faucet {
     IERC20 public tokenContract; // 代币合约
@@ -21,12 +21,12 @@ contract Faucet {
         if (recivedRecord[msg.sender] > 0) {
             require(
                 recivedRecord[msg.sender] - block.timestamp >= 1 days,
-                "You can only request tokens once every 24 hours"
+                'You can only request tokens once every 24 hours'
             );
         }
         require(
             tokenContract.balanceOf(address(this)) >= amountEachTime,
-            "Not enough tokens in the contract"
+            'Not enough tokens in the contract'
         );
         recivedRecord[msg.sender] = block.timestamp; // 更新领取记录
         tokenContract.transfer(msg.sender, amountEachTime); // 转账
@@ -34,7 +34,7 @@ contract Faucet {
 
     // 设置每次领取的数量，只有合约发布者可以调用
     function setAmountEachTime(uint256 _amountEachTime) public {
-        require(msg.sender == owner, "Only the owner can set the amount");
+        require(msg.sender == owner, 'Only the owner can set the amount');
         amountEachTime = _amountEachTime; // 更新每次领取的数量
     }
 }
