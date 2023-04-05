@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import './IERC20.sol';
+import '../IERC20.sol';
 
 contract ERC20 is IERC20 {
     string ercName;
@@ -53,6 +53,9 @@ contract ERC20 is IERC20 {
         require(ercBanlances[msg.sender] >= _value, 'money not enough');
         require(_value > 0, 'value should more then zero');
         require(address(0) != _to, 'address not be zero address');
+
+        // 溢出问题： 加法溢出： 0.8编译器版本以下； 可使用SafeMath库
+        require(ercBanlances[msg.sender] + _value > _value, 'addout!!');
 
         ercBanlances[msg.sender] -= _value;
         ercBanlances[_to] += _value;
